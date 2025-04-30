@@ -1,11 +1,23 @@
 from os import environ
+from os import popen
 
 SESSION_CONFIGS = [
-    # dict(
-    #     name='public_goods',
-    #     app_sequence=['public_goods'],
-    #     num_demo_participants=3,
-    # ),
+    dict(
+        name='demographics',
+        display_name="demographics only",
+        app_sequence=['demographics'],
+        num_demo_participants=6,
+        use_browser_bots=False,
+        oTree_version_used=popen('otree --version').read().strip()
+    ),
+dict(
+        name='prestudy_framing_sms',
+        display_name="Prestudy framing (SMS)",
+        app_sequence=['prestudy_framing_sms'],
+        num_demo_participants=6,
+        use_browser_bots=False,
+        oTree_version_used=popen('otree --version').read().strip()
+    ),
 ]
 
 # if you set a property in SESSION_CONFIG_DEFAULTS, it will be inherited by all configs
@@ -22,16 +34,33 @@ SESSION_FIELDS = []
 
 # ISO-639 code
 # for example: de, fr, ja, ko, zh-hans
-LANGUAGE_CODE = 'en'
+LANGUAGE_CODE = 'de'
 
 # e.g. EUR, GBP, CNY, JPY
-REAL_WORLD_CURRENCY_CODE = 'USD'
+REAL_WORLD_CURRENCY_CODE = 'EUR'
 USE_POINTS = True
+
+#DEBUG = False
+
+ROOMS = [
+    dict(
+        name='econ101',
+        display_name='Econ 101 class',
+        participant_label_file='_rooms/econ101.txt',
+    ),
+    dict(name='live_demo',
+         display_name='Room for live demo (no participant labels)'),
+]
 
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 
-DEMO_PAGE_INTRO_HTML = """ """
+DEMO_PAGE_INTRO_HTML = """
+Here are some oTree games.
+"""
+
 
 SECRET_KEY = '5046931017203'
+
+INSTALLED_APPS = ['otree']

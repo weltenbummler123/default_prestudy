@@ -1,0 +1,60 @@
+{{ block title }}
+
+
+    <p style="text-align: center; font-size: 26px; "> Additional questions </p>
+
+{{ endblock }}
+
+{{ block style }}
+
+    <style>
+
+        body {
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin-top: 4vw;
+            background-color: #f4f4f4;
+        }
+
+    </style>
+
+{{ endblock }}
+
+{{ block content }}
+
+    <style>
+        label[for="id_born"] {
+            display: none;
+        }
+    </style>
+
+
+<div class="card-body">
+
+<!--    <p>-->
+<!--        Please answer the following questions. These are used for demographic purposes only.-->
+<!--        This information will not be associated with your name. You remain anonymous to all the other players and the experimenters.-->
+<!--    </p>-->
+
+
+    {{ formfield 'age' }}
+    {{ formfield 'gender' }}
+
+    {{ born_question }}
+    {{ form.born }}
+
+    {{ formfield 'education' }}
+    {{ formfield 'rural' }}
+
+
+
+
+    <div style="display: flex; justify-content: flex-end">
+        {% next_button %}
+    </div>
+
+</div>
+
+
+{{ endblock }}
